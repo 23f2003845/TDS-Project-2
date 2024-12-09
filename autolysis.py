@@ -3,7 +3,8 @@
 #   "requests",
 #   "matplotlib",
 #   "seaborn",
-#   "pandas"
+#   "pandas",
+#   "chardet"
 # ]
 # ///
 import os
@@ -11,10 +12,22 @@ import requests
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import chardet
 import sys
 
 
 outputDir = os.path.dirname(os.path.abspath(__file__))
+
+
+def detect_encoding(file_path):
+    try:
+        with open(file_path, "rb") as f:
+            raw_data = f.read()
+        result = chardet.detect(raw_data)
+        return result["encoding"]
+    except Exception as e:
+        print(f"Error detecting file encoding: {e}")
+        sys.exit(1)
 
 
 # Utility function to talk to llm
@@ -37,13 +50,12 @@ def question_llm(question, context=""):
 
     result = res.json()
 
-    print(result)
     return result["choices"][0]["message"]["content"] if "error" not in result else None
 
 
 # Utility function to open file.
 def open_file(file_path):
-    df = pd.read_csv(file_path)
+    df = pd.read_csv(file_path, encoding=detect_encoding(file_path))
     return df
 
 
@@ -224,7 +236,7 @@ def visualise_categorical_data(dataset):
             ax = sns.barplot(x=bottom_15.index, y=bottom_15.values)
             plt.title(f"Bottom 15 Distribution of {col}")
             adjust_labels(ax, bottom_15.index, max_chars_per_line=15, rotate=True)
-            plt.tight_layout(rect=[0, 0, 1, 0.95])
+            plt.tight_layout(rect=(0, 0, 1, 0.95))
             plt.subplots_adjust(bottom=0.35)
             save_visualisation(plt, f"{col}_bottom_15_distribution.png")
 
@@ -234,52 +246,50 @@ if __name__ == "__main__":
         print("Filename required")
         sys.exit()
 
-    filename = sys.argv[1]
-    dataset = open_file(filename)
-    summary = summarize(dataset)
+    for filename in sys.argv[1:]:
+        dataset = open_file(filename)
+        summary = summarize(dataset)
 
-    insights = question_llm(
-        "Analyse and provide insights from the dataset.",
-        context=f"dataset summary: {summary} \n Missing values: {dataset.isnull().sum()}",
-    )
-    print(insights)
+        insights = question_llm(
+            "Analyse and provide insights from the dataset.",
+            context=f"dataset summary: {summary} \n Missing values: {dataset.isnull().sum()}",
+        )
+        print(insights)
 
-    visualise_outliers(dataset)
-    correlation_matrix = visualise_correlation(dataset)
-    visualise_time_series(dataset)
-    visualise_geographic_analysis(dataset)
-    visualise_categorical_data(dataset)
+        visualise_outliers(dataset)
+        correlation_matrix = visualise_correlation(dataset)
+        visualise_time_series(dataset)
 
-    # Numeric analysis
-    numeric_insights = question_llm(
-        "Provide me insights about the following numeric columns.",
-        context=f"Numeric columns summary:\n{dataset.select_dtypes(include=['number']).describe()}",
-    )
+        # Numeric analysis
+        numeric_insights = question_llm(
+            "Provide me insights about the following numeric columns.",
+            context=f"Numeric columns summary:\n{dataset.select_dtypes(include=['number']).describe()}",
+        )
 
-    # Generating the story
-    story = question_llm(
-        "Generate a nice and creative story from the analysis",
-        context=f"Dataset Analysis:\nSummary: {summary}\nMissing Values: {dataset.isnull().sum()}\nInsights: {insights}\nNumeric Column Insights: {numeric_insights}",
-    )
+        # Generating the story
+        story = question_llm(
+            "Generate a nice and creative story from the analysis",
+            context=f"Dataset Analysis:\nSummary: {summary}\nMissing Values: {dataset.isnull().sum()}\nInsights: {insights}\nNumeric Column Insights: {numeric_insights}",
+        )
 
-    try:
-        with open(os.path.join(outputDir, "README.md"), "w") as f:
-            f.write("# Data Analysis Report\n\n")
-            f.write("## Overview\n")
-            f.write(f"File: {filename}\n\n")
-            f.write("## Summary Statistics\n")
-            f.write(f"{summary}\n\n")
-            f.write("## Missing Values\n")
-            f.write(f"{dataset.isnull().sum()}\n\n")
-            f.write("## Insights\n")
-            f.write(f"{insights}\n\n")
-            f.write("## Numeric Insights\n")
-            f.write(f"{numeric_insights}\n\n")
-            f.write("## Story\n")
-            f.write(f"{story}\n")
-    except Exception as e:
-        print(f"Error writing to README.md: {e}")
+        try:
+            with open(os.path.join(outputDir, "README.md"), "w") as f:
+                f.write("# Data Analysis Report\n\n")
+                f.write("## Overview\n")
+                f.write(f"File: {filename}\n\n")
+                f.write("## Summary Statistics\n")
+                f.write(f"{summary}\n\n")
+                f.write("## Missing Values\n")
+                f.write(f"{dataset.isnull().sum()}\n\n")
+                f.write("## Insights\n")
+                f.write(f"{insights}\n\n")
+                f.write("## Numeric Insights\n")
+                f.write(f"{numeric_insights}\n\n")
+                f.write("## Story\n")
+                f.write(f"{story}\n")
+        except Exception as e:
+            print(f"Error writing to README.md: {e}")
 
-    print("Analysis complete! Results saved to README.md.")
+        print("Analysis complete! Results saved to README.md.")
 
     # question_llm("Are you ready?")
