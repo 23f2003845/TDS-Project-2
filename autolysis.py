@@ -16,9 +16,6 @@ import chardet
 import sys
 
 
-outputDir = os.path.dirname(os.path.abspath(__file__))
-
-
 def detect_encoding(file_path):
     try:
         with open(file_path, "rb") as f:
@@ -60,7 +57,7 @@ def open_file(file_path):
 
 
 # Utitlity function to save visualisations
-def save_visualisation(visualisation, filename):
+def save_visualisation(visualisation, outputDir, filename):
     try:
         visualisation.tight_layout()
         visualisation.savefig(os.path.join(outputDir, filename), bbox_inches="tight")
@@ -90,7 +87,7 @@ def summarize(dataset):
 
 
 # Function to find correlation matrix and plot it
-def visualise_correlation(dataset):
+def visualise_correlation(dataset, outputDir):
     filtered_numeric_dataset = dataset.select_dtypes(include=["number"])
     if filtered_numeric_dataset.empty:
         print("No numeric columns found")
@@ -108,14 +105,14 @@ def visualise_correlation(dataset):
         correlation_matrix, annot=True, cmap="coolwarm", fmt=".3f", linewidth=0.8
     )
     plt.title("Correlation Matrix Heatmap")
-    save_visualisation(plt, "correlation_matrix_heatmap.png")
+    save_visualisation(plt, outputDir, "correlation_matrix_heatmap.png")
     print("Saved correlation matrix heatmap")
 
     return correlation_matrix
 
 
 # Function to visualise outliers
-def visualise_outliers(dataset):
+def visualise_outliers(dataset, outputDir):
     filtered_numeric_dataset = dataset.select_dtypes(include=["number"])
     if filtered_numeric_dataset.empty:
         print("No numeric columns found")
@@ -128,12 +125,12 @@ def visualise_outliers(dataset):
 
     plt.xticks(rotation=90)  # Changing orientation of the x-axis labels
 
-    save_visualisation(plt, "outliers_boxplot.png")
+    save_visualisation(plt, outputDir, "outliers_boxplot.png")
     print("Saved Outlier Boxplot heatmap")
 
 
 # Function to visualise time series data
-def visualise_time_series(dataset):
+def visualise_time_series(dataset, outputDir):
     if "Date" in dataset.columns:
         try:
             dataset["Date"] = pd.to_datetime(dataset["Date"])
@@ -145,7 +142,7 @@ def visualise_time_series(dataset):
             plt.figure(figsize=(12, 6))
             sns.lineplot(data=dataset, x="Date", y=numeric_columns[0])
             plt.title(f"Time Series Analysis for {numeric_columns[0]}")
-            save_visualisation(plt, "time_series.png")
+            save_visualisation(plt, outputDir, "time_series.png")
         except Exception as e:
             print(f"Error in Time Series Analysis: {e}")
     else:
@@ -153,7 +150,7 @@ def visualise_time_series(dataset):
 
 
 # Function to visualise geographic data
-def visualise_geographic_analysis(dataset):
+def visualise_geographic_analysis(dataset, outputDir):
     if "Latitude" in dataset.columns and "Longitude" in dataset.columns:
         plt.figure(figsize=(10, 8))
         sns.scatterplot(
@@ -163,13 +160,13 @@ def visualise_geographic_analysis(dataset):
             hue=dataset.select_dtypes(include=["number"]).columns[0],
         )
         plt.title("Geographic Analysis")
-        save_visualisation(plt, "geographic_analysis.png")
+        save_visualisation(plt, outputDir, "geographic_analysis.png")
     else:
         print("Latitude and Longitude columns are missing.")
 
 
 # Function to visualise categorical data
-def visualise_categorical_data(dataset):
+def visualise_categorical_data(dataset, outputDir):
     non_numeric_df = dataset.select_dtypes(exclude=["number"])
     for col in non_numeric_df.columns:
         # Count the unique values in the column
@@ -203,9 +200,9 @@ def visualise_categorical_data(dataset):
             ax = sns.countplot(x=col, data=dataset, order=value_counts.index)
             plt.title(f"Distribution of {col}")
             adjust_labels(ax, value_counts.index, max_chars_per_line=10, rotate=False)
-            plt.tight_layout(rect=[0, 0, 1, 0.95])
+            plt.tight_layout(rect=(0, 0, 1, 0.95))
             plt.subplots_adjust(bottom=0.25)
-            save_visualisation(plt, f"{col}_distribution.png")
+            save_visualisation(plt, outputDir, f"{col}_distribution.png")
 
         elif 15 < num_unique_values <= 30:
             # Case 2: 15 < bars <=30, enhance readability
@@ -215,7 +212,7 @@ def visualise_categorical_data(dataset):
             adjust_labels(ax, value_counts.index, max_chars_per_line=15, rotate=True)
             plt.tight_layout(rect=[0, 0, 1, 0.95])
             plt.subplots_adjust(bottom=0.35)
-            save_visualisation(plt, f"{col}_distribution.png")
+            save_visualisation(plt, outputDir, f"{col}_distribution.png")
 
         else:
             # Case 3: Bars > 30, two graphs (top 15 and bottom 15 value-wise)
@@ -227,9 +224,9 @@ def visualise_categorical_data(dataset):
             ax = sns.barplot(x=top_15.index, y=top_15.values)
             plt.title(f"Top 15 Distribution of {col}")
             adjust_labels(ax, top_15.index, max_chars_per_line=15, rotate=True)
-            plt.tight_layout(rect=[0, 0, 1, 0.95])
+            plt.tight_layout(rect=(0, 0, 1, 0.95))
             plt.subplots_adjust(bottom=0.35)
-            save_visualisation(plt, f"{col}_top_15_distribution.png")
+            save_visualisation(plt, outputDir, f"{col}_top_15_distribution.png")
 
             # Bottom 15 graph
             plt.figure(figsize=(12, 8))
@@ -238,7 +235,7 @@ def visualise_categorical_data(dataset):
             adjust_labels(ax, bottom_15.index, max_chars_per_line=15, rotate=True)
             plt.tight_layout(rect=(0, 0, 1, 0.95))
             plt.subplots_adjust(bottom=0.35)
-            save_visualisation(plt, f"{col}_bottom_15_distribution.png")
+            save_visualisation(plt, outputDir, f"{col}_bottom_15_distribution.png")
 
 
 if __name__ == "__main__":
@@ -247,6 +244,8 @@ if __name__ == "__main__":
         sys.exit()
 
     for filename in sys.argv[1:]:
+        outputDir = filename.split(".")[0]
+        outputDir = outputDir.split("/")[-1]
         dataset = open_file(filename)
         summary = summarize(dataset)
 
@@ -256,9 +255,10 @@ if __name__ == "__main__":
         )
         print(insights)
 
-        visualise_outliers(dataset)
-        correlation_matrix = visualise_correlation(dataset)
-        visualise_time_series(dataset)
+        visualise_outliers(dataset, outputDir)
+        correlation_matrix = visualise_correlation(dataset, outputDir)
+        visualise_time_series(dataset, outputDir)
+        visualise_geographic_analysis(dataset, outputDir)
 
         # Numeric analysis
         numeric_insights = question_llm(
