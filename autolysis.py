@@ -14,6 +14,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import chardet
 import sys
+import base64
 
 
 def detect_encoding(file_path):
@@ -27,9 +28,17 @@ def detect_encoding(file_path):
         sys.exit(1)
 
 
+auth_token = os.environ["AIPROXY_TOKEN"]
+
+
+# Utility Function to encode the image
+def encode_image(image_path):
+    with open(image_path, "rb") as image_file:
+        return base64.b64encode(image_file.read()).decode("utf-8")
+
+
 # Utility function to talk to llm
 def question_llm(question, context=""):
-    auth_token = os.environ["AIPROXY_TOKEN"]
     res = requests.post(
         "https://aiproxy.sanand.workers.dev/openai/v1/chat/completions",
         headers={"Authorization": f"Bearer {auth_token}"},
@@ -41,6 +50,41 @@ def question_llm(question, context=""):
                     "content": "You are a well experienced data scientist and analyst. You have been provided some data and you need to narrate a story from it. Go ahead and make it creative",
                 },
                 {"role": "user", "content": f"{question}. \n Context: f{context}"},
+            ],
+        },
+    )
+
+    result = res.json()
+
+    print(result)
+    return result["choices"][0]["message"]["content"] if "error" not in result else None
+
+
+# Utitlity function to talk to llms but with images
+def ask_llm_with_image(imagePath, content):
+    res = requests.post(
+        "https://aiproxy.sanand.workers.dev/openai/v1/chat/completions",
+        headers={"Authorization": f"Bearer {auth_token}"},
+        json={
+            "model": "gpt-4o-mini",
+            "messages": [
+                {
+                    "role": "system",
+                    "content": "You are a well experienced data scientist and analyst. You have been provided with an image which are most probably some graphs and you have to answer the questions based on the graph.",
+                },
+                {
+                    "role": "user",
+                    "content": [
+                        {"type": "text", "text": f"{content}"},
+                        {
+                            "type": "image_url",
+                            "image_url": {
+                                "url": f"data:image/png;base64,{encode_image(imagePath)}",
+                                "detail": "low",
+                            },
+                        },
+                    ],
+                },
             ],
         },
     )
@@ -127,6 +171,7 @@ def visualise_outliers(dataset, outputDir):
 
     save_visualisation(plt, outputDir, "outliers_boxplot.png")
     print("Saved Outlier Boxplot heatmap")
+    return plt
 
 
 # Function to visualise time series data
@@ -143,6 +188,7 @@ def visualise_time_series(dataset, outputDir):
             sns.lineplot(data=dataset, x="Date", y=numeric_columns[0])
             plt.title(f"Time Series Analysis for {numeric_columns[0]}")
             save_visualisation(plt, outputDir, "time_series.png")
+            return plt
         except Exception as e:
             print(f"Error in Time Series Analysis: {e}")
     else:
@@ -243,10 +289,11 @@ if __name__ == "__main__":
         print("Filename required")
         sys.exit()
 
+    outputDir = "."
     for filename in sys.argv[1:]:
-        outputDir = filename.split(".")[0]
-        outputDir = outputDir.split("/")[-1]
-        os.mkdir(outputDir)
+        # outputDir = filename.split(".")[0]
+        # outputDir = outputDir.split("/")[-1]
+        # os.mkdir(outputDir)
         dataset = open_file(filename)
         summary = summarize(dataset)
 
@@ -256,7 +303,7 @@ if __name__ == "__main__":
         )
         print(insights)
 
-        visualise_outliers(dataset, outputDir)
+        outliers_plt = visualise_outliers(dataset, outputDir)
         correlation_matrix = visualise_correlation(dataset, outputDir)
         visualise_time_series(dataset, outputDir)
         visualise_geographic_analysis(dataset, outputDir)
@@ -273,21 +320,38 @@ if __name__ == "__main__":
             context=f"Dataset Analysis:\nSummary: {summary}\nMissing Values: {dataset.isnull().sum()}\nInsights: {insights}\nNumeric Column Insights: {numeric_insights}",
         )
 
+        # Questioning llm with images
+        outliers_summary = ask_llm_with_image(
+            os.path.join(outputDir, "outliers_boxplot.png"),
+            content="What can I infer from this plot? It is plotted to show outliers in the dataset.",
+        )
+
+        correlation_summary = ask_llm_with_image(
+            os.path.join(outputDir, "correlation_matrix_heatmap.png"),
+            content="What can I infer from this plot?",
+        )
         try:
             with open(os.path.join(outputDir, "README.md"), "w") as f:
                 f.write("# Data Analysis Report\n\n")
                 f.write("## Overview\n")
                 f.write(f"File: {filename}\n\n")
-                f.write("## Summary Statistics\n")
-                f.write(f"{summary}\n\n")
-                f.write("## Missing Values\n")
-                f.write(f"{dataset.isnull().sum()}\n\n")
                 f.write("## Insights\n")
                 f.write(f"{insights}\n\n")
                 f.write("## Numeric Insights\n")
                 f.write(f"{numeric_insights}\n\n")
                 f.write("## Story\n")
                 f.write(f"{story}\n")
+                f.write("## Outliers Analysis\n")
+                f.write("![Image](./outliers_bloxplot.png)\n")
+                f.write(f"{outliers_summary}\n")
+                f.write("## Correlation Matrix Analysis\n")
+                f.write("![Image](./correlation_matrix_heatmap.png)\n")
+                f.write(f"{correlation_summary}\n")
+                f.write("## Summary Statistics\n")
+                f.write(f"{summary}\n\n")
+                f.write("## Missing Values\n")
+                f.write(f"{dataset.isnull().sum()}\n\n")
+
         except Exception as e:
             print(f"Error writing to README.md: {e}")
 
