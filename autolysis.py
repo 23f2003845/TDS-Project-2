@@ -243,12 +243,10 @@ if __name__ == "__main__":
         print("Filename required")
         sys.exit()
 
-    outputDir = "."
-
     for filename in sys.argv[1:]:
-        # outputDir = filename.split(".")[0]
-        # outputDir = outputDir.split("/")[-1]
-        # os.mkdir(outputDir)
+        outputDir = filename.split(".")[0]
+        outputDir = outputDir.split("/")[-1]
+        os.mkdir(outputDir)
         dataset = open_file(filename)
         summary = summarize(dataset)
 
