@@ -1,8 +1,137 @@
 # Data Analysis Report
 
 ## Overview
-File: /Users/harshrohitshah/Library/Application Support/tds-sep-24-project-2/datasets/media.csv
+File: datasets/media.csv
 
+## Insights
+In the rich tapestry of data storytelling, we sometimes find threads of intrigue, patterns of behavior, and insights that weave together to narrate a compelling saga. This dataset, comprising 2652 rows and 8 columns, presents an opportunity to explore a realm of ratings and reviews, characterized by its missing dates and contributors, leaving us with tales left to be told.
+
+### The Characters – Who Invited This Dataset?
+- **Language** and **Type**: These columns hint at diversity – languages and types of content are integral but appear free of missing data, setting the stage for a global narrative. Could we uncover a multilingual world, all while exploring different genres of content, or perhaps educational materials?
+  
+- **Title**: No missing titles here, which allows us a glimpse into the specific pieces being rated – albeit with some degree of mystery as to their full context.
+
+- **By**: The column indicating contributors has significant missing values (262 entries), introducing an enigmatic element. Who remains unrecognized, and do their opinions differ from those who were recorded? Was it a well-known entity, or possibly an overlooked contributor whose insights could have shifted perceptions?
+
+### The Plot - Scores and Sentiments
+Delving into the overall rating, quality of content, and repeatability reveals a somewhat comforting narrative:
+- **Overall Ratings**: The average score hovers around **3.05**. This suggests that the content is generally viewed as acceptable but not spectacular. Our protagonists might have moments of brilliance but tend to keep it safe, like a good TV series rather than a blockbuster movie.
+  
+- **Quality Ratings**: Averaging at **3.21**, the quality adds a nuanced layer. It's slightly above average, suggesting content that, while not universally lauded, manages to maintain relevance. Could this represent a trend of crowd-pleasing works?
+
+- **Repeatability Ratings**: The average repeatability of **1.49** indicates that content is possibly more of a one-time experience; perhaps once you've seen it, there's little incentive to return—an intriguing notion about the transient nature of engagement.
+
+### The Missing Links – A Call for Resolution
+A quick glance at the missing values surfaces key areas that need addressing:
+- With **99 missing dates**, we find important timestamps drifting away, obscuring the context that could have illuminated temporal trends. Were there spikes in ratings at certain periods, or are they merely scattered across a timeline?
+  
+- The contributors, with significant gaps, remind us of unknown voices whose absence could change our interpretation. Were they critics, lay viewers, or industry insiders? Their insights might carry weight—an editorial voice left unheard.
+
+### The Conclusion – What Lies Ahead
+In the analysis of this dataset, we uncover a world straddling the ordinary and the extraordinary. A place where the unrecognized is as significant as the acclaimed. To complete this narrative, we would need to fill in the gaps—investigate the missing dates, explore who the contributors were, and what their absence might mean. 
+
+Ultimately, this dataset tells a broader story about content consumption—its popularity, challenges in engagement, and the ongoing need for diverse narratives, all while beckoning deeper questions of quality versus quantity in our rapidly evolving digital landscape. Will the unsung voices rise, or will those few remaining records define the plot of our modern age? The answer lies within the next steps—let's embark on a journey of exploration and analysis to uncover more layers of this intriguing story.
+
+## Numeric Insights
+As we dive into the narrative of this dataset, we find ourselves on an exploratory journey through the realms of three vital metrics: overall performance, quality, and repeatability. Each numeric column serves as a character in our story, revealing unique aspects of a larger phenomenon.
+
+**The Protagonist: Overall Performance**
+
+In the world of overall performance, represented by a mean of approximately 3.05, we discover a character that exemplifies a decent baseline. With a standard deviation of 0.76, this character possesses a moderate level of volatility, hinting that it is neither outstanding nor entirely lacking. It operates between the extremes, standing tall at a maximum of 5 but often resting comfortably at a score of 3.
+
+Looking closer, the quartiles tell an intriguing story of stability. The lower 25% of the data is firmly at the score of 3, illustrating that a significant portion of our participants finds themselves at a solid par. However, the peaks come into play at the upper quartiles, with a few reaching for the heights of 5. Here, we see the aspiration and ambition leak into the storyline but also reveal the struggles some face to aspire and reach their true potential.
+
+**The Companion: Quality**
+
+Supporting our protagonist is the quality metric. With a mean of approximately 3.21, quality captivates the audience with a slightly elevated perception compared to overall performance. Its standard deviation is a touch higher at 0.80, suggesting that there’s a bit more drama in its journey.
+
+Minimum and maximum values tell us that quality is grounded at 1 but can soar alongside overall performance to a splendid 5. The first quartile lingers at 3 as well, but it showcases a slightly more generous upper bound, with the third quartile nudging to 4. This indicates that many participants manage to achieve higher quality, despite the challenges—and this might be a reflection of their training, experience, or the resources available to them.
+
+**The Enigma: Repeatability**
+
+And here enters repeatability into our narrative; a character less frequently discussed yet extremely crucial. With a mean shy of 1.5, its understated presence contrasts sharply with overall performance and quality. This suggests that most instances revolve around a lower scale of achievement, with patrons struggling to reach consistency. The maximum value of 3 hints that while there are some instances of commendable repeatability, they are a rare sight in this tale.
+
+Exploring quartiles unveils a stark reality: the first and median quartiles stand rigid at 1, emphasizing a struggle to maintain repeatability across the board. Only in the play of the third quartile do we see glimpses of potential, revealing that there are but a few who have managed to break the clutches of inconsistency.
+
+**Epilogue: The Interwoven Narrative**
+
+As these threads of overall performance, quality, and repeatability intertwine, they breed a complex narrative. While overall performance and quality stand together in solidarity—a duo that, while capable of remarkable feats, showcases varying degrees of success—repeatability lingers behind, embodying a challenge that many face. This narrative compels us to delve deeper, to unravel the reasons behind these gaps, and to seek solutions that transcend the barriers presented by the current data.
+
+This analysis leaves us with a quest: to understand how we can lift up the character of repeatability, to ensure that all players in this story can find their footing and reach for their peaks, transforming ordinary metrics into extraordinary achievements. Will they rise to the occasion? Only time—and further analysis—will tell.
+
+## Story
+Once upon a time, in the vibrant realm of data, a treasure trove was unearthed. This dataset, a clandestine library of scores and sentiments, held 2,652 unique scrolls—the whispers of wisdom from the world of content ratings. Like enigmatic fragments of an unfinished tapestry, each scroll revealed clues, etched with the ink of reviewers’ thoughts, even as some threads appeared frayed, waiting to be woven together.
+
+### Chapter 1: The Unsung Voices
+
+In the land of Revieweria, where opinions danced like fireflies in the night, two illustrious figures stood on opposite sides of a great divide: **Language** and **Type**. They spoke in every tongue imaginable and belonged to diverse categories of artistry. Together they curiously represented the richness of Revieweria, free from doubt, unclouded by missing fragments, suggesting this world thrummed with multicultural narratives and varied genres, each beckoning understanding. 
+
+Yet, a shroud of mystery cloaked the **By** column, where 262 names remained concealed in the shadows. Did these absent voices harbor the stardust of brilliance, or were they destined to blend into a background of forgotten tales? In the absence of their narratives, it became a riddle even the wisest sages had yet to solve. 
+
+### Chapter 2: The Journey of Ratings
+
+As the search for answers deepened, the heart of the scroll revealed intriguing landmarks—**Overall**, **Quality**, and **Repeatability** ratings intertwined as they journeyed through the realities of audiences and creators alike.
+
+The **Protagonist**, Overall Performance, with an average score of 3.05, captured the essence of mediocrity. It resembled a brochure for a quaint inn: inviting yet modest, offering charm without grandeur. This figure loomed over the land, occasional bursts of brilliance("the peaks of 5") punctuating its humdrum existence. The wide expanse of scores indicated a fickle audience, with performance oscillating between acceptable fare and fleeting excitement. 
+
+Supporting our protagonist was **Quality**, slightly more illustrious, coming in with an average of 3.21. This companion led audiences to moments of satisfaction, delivering modest yet perceptibly better experiences amidst rocky terrain. An exploration of the highest scoring content suggested a flickering hope—a yearning for more dramatic encounters that reflected deeper quality. 
+
+At last, making a quiet entrance, we encountered **Repeatability**—the humble sibling embodying quiet struggle. With a rating that barely brushed 1.5, this character embodied the transient nature of engagement, echoing the collective decision that a singular experience sufficed. Loneliness lingered in its corners, evoking a sense of yearning for deeper connection.
+
+### Chapter 3: The Gaps Beneath the Surface
+
+As the seekers delved further, they stumbled upon the chasms left by the **missing data**, 99 dates strewn like autumn leaves blown away by the wind. Each date represented a turning point that could unveil emotional peaks and valleys—moments when opinions flourished, outbursts of love or disdain swept across Revieweria. Perhaps, too, they would find the magic threshold, a time when uninhibited creativity shone through, igniting passion in otherwise placid waters.
+
+The absence of contributions was reminiscent of a forest ripe with trees yet lacking the song of birds. Who were these elusive contributors? Did their echoes still ripple through the realm? What words of wisdom lay unspoken, their valuable insights waiting silently to be discovered? The possibilities seemed boundless, yearnings and dreams steeped in the unknown.
+
+### Conclusion: The Next Step of Our Adventure
+
+As the winds whispered through the valleys of Revieweria, its inhabitants understood—an essential journey awaited them. To recover the lost voices and uncover the hidden stories, they would need to scour the uncharted realms and venture into new territories. 
+
+New queries would follow, uncovering the missing dates, inviting unresolved voices to speak, and capturing the journeys of experience on this evolving canvas. For in every story, whether of mild discouragement or spirited enthusiasm, lay the universal desire for connection, understanding, and transformation.
+
+Thus, the adventure would bloom; the tapestry enriched with deeper insights, including the nurturing touch of humanity. In the pursuit of meaning and connection, Revieweria held the promise of growth—a continuous journey where even the smallest voices could find relevance amid the chorus of narrations.
+
+Will the narrative evolve, or will it stagnate in the stubborn shades of mediocrity? As the data storytellers hatch their plans, one truth remains: the real journey has only just begun. Let's embark on this exploration to reveal the next chapters, and perhaps even more captivating tales yet unheard.
+## Outliers Analysis
+![Image](./outliers_bloxplot.png)
+From the provided boxplot, you can infer several key aspects about the dataset concerning the three categories: "overall," "quality," and "repeatability."
+
+1. **Boxplot Structure**:
+   - Each box represents the interquartile range (IQR), showing the middle 50% of the data.
+   - The line inside each box indicates the median of the dataset.
+   - The "whiskers" extend to show the rest of the distribution, except for points that are considered outliers.
+
+2. **Outliers**:
+   - The presence of individual points outside the whiskers indicates outliers in each category.
+   - "Overall" and "quality" have multiple outliers, suggesting variability or extreme values within these datasets.
+   - "Repeatability" has fewer or no visible outliers, indicating more consistent data.
+
+3. **Comparison of Categories**:
+   - The median of "quality" is higher than "overall," suggesting that the quality ratings are generally better or more favorable.
+   - The "repeatability" category shows the lowest median, indicating that repeatability might be a more challenging or lower-rated aspect compared to overall and quality.
+
+4. **Variability**:
+   - The range (the difference between the highest and lowest values) appears wider in "overall" and "quality," signifying more variability in those categories compared to "repeatability."
+
+5. **Data Distribution**:
+   - If the boxes are not symmetrically placed within the whiskers, it may indicate skewness in the data for that category.
+
+Overall, this boxplot effectively highlights the presence of outliers and allows for a comparative analysis between the different categories in relation to their medians and spread.
+## Correlation Matrix Analysis
+![Image](./correlation_matrix_heatmap.png)
+From the correlation matrix heatmap, you can infer the following:
+
+1. **Correlation Strength**: The values in the heatmap represent the Pearson correlation coefficients between the variables:
+   - **Overall and Quality**: There is a strong positive correlation (0.826), indicating that as the overall score increases, the quality score tends to increase as well.
+   - **Overall and Repeatability**: There is a moderate positive correlation (0.513), suggesting a positive relationship, but it is weaker than the correlation between overall and quality.
+   - **Quality and Repeatability**: The correlation is relatively low (0.312), indicating a weaker relationship between these two variables.
+
+2. **Diagonal Values**: The diagonal values are all 1.000, which is expected as they represent the correlation of each variable with itself.
+
+3. **Color Coding**: The heatmap uses color intensity to indicate the strength of correlations. Darker shades indicate a stronger correlation, while lighter shades indicate weaker correlations.
+
+Overall, the strongest relationship is between "overall" and "quality," which suggests that improving overall scores may significantly impact quality scores. The relationship between "quality" and "repeatability" is less pronounced.
 ## Summary Statistics
 {'row_count': 2652, 'column_count': 8, 'columns': {'date': dtype('O'), 'language': dtype('O'), 'type': dtype('O'), 'title': dtype('O'), 'by': dtype('O'), 'overall': dtype('int64'), 'quality': dtype('int64'), 'repeatability': dtype('int64')}, 'missing_values': {'date': 99, 'language': 0, 'type': 0, 'title': 0, 'by': 262, 'overall': 0, 'quality': 0, 'repeatability': 0}, 'descriptive_summary':                    mean       std  min  25%  50%  75%  max
 date                NaN       NaN  NaN  NaN  NaN  NaN  NaN
@@ -25,103 +154,3 @@ quality            0
 repeatability      0
 dtype: int64
 
-## Insights
-### Unveiling the Hidden Stories in Data: A Narrative Journey
-
-Let’s embark on a narrative voyage into our dataset, a tapestry woven with 2,652 rows and eight distinct threads, each representing a facet of information. While the numbers may initially appear to be a mere collection of values, each data point encapsulates a story waiting to be told. 
-
-#### A Historical Snapshot 
-
-We begin with the dataset's chronology, marked with entries corresponding to various dates. However, the absence of data in this critical field—99 missing values—casts a veil of mystery over our temporal narrative. What stories from those lost dates might have enriched our understanding?
-
-A robust analysis reveals three integral metrics, each representing a different measurement of performance: *overall*, *quality*, and *repeatability*. 
-
-#### The Paragon of Performance 
-
-- **Overall Rating**: Averaging around **3.05**, the overall experience depicted by the dataset suggests a landscape that is neither remarkable nor disappointing—a satisfactory average that hints at potential for both improvement and excellence. The standard deviation of **0.76** indicates a fair amount of variability, revealing that while many users felt content, a minority may have experienced dissatisfaction.
-
-- **Quality Rating**: With an even higher average of **3.21** and a standard deviation of **0.80**, the quality ratings offer a slightly brighter picture. Quality is what elevates experiences from "good enough" to "memorable." The ratings fluctuate, indicating that some offerings resonate more strongly than others, perhaps entwined with the narratives of the creators.
-
-- **Repeatability**: This metric stands out with a mean of **1.49** and a standard deviation of **0.60**, primarily clustering around low values (with many entries reporting **1**). Repeatability reflects how likely users are to engage again. A lower score here suggests that while people may have found some experiences to be satisfactory, they were not inclined to revisit them. This poses an interesting question: What factors influenced their decisions to seek new narratives rather than revisit old ones?
-
-#### The Quest for Voices Unheard
-
-As we delve deeper into our dataset, we uncover a significant gap in the *by* attribute, an alarming **262 missing values**. This void calls for exploration: Who are the creators behind these experiences? Are they influential figures whose absence would color perceptions of quality? Or perhaps emerging artists whose stories haven't been fully told? The missing voices herald untold tales, missed collaborations, and a rich blend of cultural backgrounds.
-
-#### A Multilingual Mosaic
-
-The absence of missing values in *language* indicates that the content is expressed in well-defined linguistic forms, suggesting a vibrant mix of cultures and narratives. Every language carries a unique rhythm and flair. How do the various languages interact within the data? Do certain languages correlate with higher quality ratings, inviting us into the rich conversations they foster?
-
-#### Final Reflections: A Call for A Deeper Dive 
-
-In conclusion, while our initial exploration of the dataset paints a general picture of user satisfaction and experience, it importantly raises new questions rather than answering all of them. 
-
-- What patterns can we discern in user experiences based on different creators?
-- How can we enhance the overall rating through specific interventions based on quality?
-- What are the creative factors contributing to both higher engagement and repeatability?
-
-Each data point is not merely a row and column but represents a multifaceted narratives that speak of human experience, emotion, and interaction. The dataset is a canvas—how we choose to paint it informs us not just about past performances but also about the vibrant possibilities for future endeavors. 
-
-Let’s roll up our sleeves and dive deeper, for the stories are there, waiting to be unearthed. What’s next in this data odyssey? The journey is only just beginning!
-
-## Numeric Insights
-Once upon a time in the kingdom of DataLand, three noble traits emerged from the mystical depths of numbers: **Overall**, **Quality**, and **Repeatability**. The kingdom was diverse, made up of 2,652 brave souls, each one contributing to the rich tapestry of data.
-
-### The Overall Kingdom
-Our journey begins with the fabled trait **Overall**. Its majestic average stood at **3.05**, suggesting that while the kingdom was not without its issues, the citizens generally rated their experiences as favorable. A standard deviation of **0.76** revealed variability among the citizens; some were blissfully satisfied, while others were more critical. The lowest rating was a humble **1**, indicating a solitary soul who perhaps found their experience lacking. However, treasure was to be found, as one remarkable citizen declared their experience as a perfect **5**. In the grand scheme of things, **nobody** was stuck in apathy—half of the citizens quoted a respectable **3 or above**, giving hope that many recognized the beauty of their kingdom.
-
-### The Quality of Life
-The honorable trait of **Quality** was a mirror reflecting the heart of the kingdom. With a mean score of **3.21**, it was a gentle reminder of the kingdom’s potential for greatness. The people believed in quality, and as seen with a standard deviation of **0.80**, aspirations and realities danced at different paces. It was notable that three-quarters of the citizens reported experiences of at least **4** - a sign of optimism sweeping through the villages. The **min** of **1** intertwined with the **max** of **5** portrays a tale of extremes, but the majority strived for excellence. The citizens embraced a quality ethos, each trying to uplift the standards of their community.
-
-### The Cycle of Repeatability
-But in every kingdom, patterns emerge, and the affair of **Repeatability** told a more complex story. With a mean of **1.49**, the repeatability of experiences appeared lower than its counterparts, whispering secrets of adventures not revisited. The standard deviation of **0.60** insinuated that three distinct groups existed: the *one-timers* who fluttered in and out with a cursory evaluation, the *repeat explorers* who sought familiarity, and the few devoted souls who returned to the same joyous moments repeatedly. The numbers laid a clear narrative—the lowest value residing at **1** suggested that many were hesitant to revisit cherished experiences. Only a handful, represented by the max of **3**, dared to return, further reinforcing the call for enhancing repeatable experiences in the realm.
-
-### Conclusion: A Kingdom of Promise
-As the sun sets over DataLand, the tale unveils a kingdom filled with promise. The citizens may have differing experiences in Overall enjoyment and Quality of life, but they see potential. The low scores in Repeatability beckon the rulers of this kingdom to enhance the expressions of value and draw dwellers back to the experiences they once cherished. 
-
-DataLand stands at a crossroads: will it evolve into a realm where citizens return time and again to celebrate their experiences, or will it remain a land of fleeting escapades? 
-
-The future is in the hands of its people, and as the loyal subjects analyze their narratives, one thing remains clear - **there is much work to be done, and much more to explore.**
-
-## Story
-### A Data-Driven Fable: The Odyssey of Experience in DataLand
-
-In a quiet corner of the information universe lay DataLand, a kingdom brimming with knowledge, but riddled with untold mysteries. Here, numbers reigned supreme, forming alliances and creating stories that weaved through time, touching the lives of 2,652 denizens. Our tale begins as we embark on a quest to unravel the secrets held within this tapestry of data.
-
-#### Chapter 1: The Enigmatic Calendar
-
-Like any thriving kingdom, DataLand had its own timeline, but alas! A cryptic fog hung over its history. Out of the lush garden of dates, a cloud of 99 missing values lingered ominously. Each absent day may have sung a song of forgotten experiences or cultural confluences long lost to time. 
-
-What magic would the missing dates have imbued into our understanding of the kingdom? Were there grand festivals celebrated in the past, or perhaps epic tales of struggles and triumphs lost to the abyss of incomplete records?
-
-#### Chapter 2: The Three Pillars of Evaluation
-
-As we delve deeper, DataLand reveals three noble pillars that define its inhabitants' experiences: **Overall**, **Quality**, and **Repeatability**. Each pillar stands tall, yet casts unique shadows across the realm.
-
-- **Overall**: Glancing upon the serene heights of the Overall score, we note an average of **3.05**. The citizens were content to wade through experiences of moderate pleasure, sparking hope amid various levels of satisfaction. Yet the whispers of discontent floated from below, calling attention to a small faction whose enthusiasm barely tickled the surface with a **1**. Still, like a beacon in the night, a solitary soul rejoiced with a maximum of **5**, proffering the promise of glory to those who strive for greatness.
-
-- **Quality**: With a noble heart, the Quality score shines a little brighter, averaging **3.21**. This number is the gentle reminder that while the kingdom lived on the edge of mediocrity, quality was not far behind. Although its journey showcases numbers steeped in variability, more than half the citizens reported situations where experiences ignited emotions above **3**, hinting at the possibility of memorable connections blossoming in the midst of mundane interactions.
-
-- **Repeatability**: Alas! The third pillar tells a tale of reticent souls. The repeatability score huddles around a meek mean of **1.49**—whispers of mere curiosity echoing amidst the villagers. Their hearts drew them toward escapades anew, hesitant to revisit memories crafted in days past. This stark divide raises poignant questions: Were the cherished stories not alluring enough to draw them back? Or had the thrill of novelty woven a spell that rendered familiarity uninviting?
-
-#### Chapter 3: The Silent Artisans
-
-Amidst the bustle of experiences lived and shared, DataLand unearthed an unsettling truth: **262 creators remained shrouded in silence**, their contributions lost in the ether. Who were these artisans, the unseen architects shaping the realm's narrative? Were they the visionaries whose brilliance inspired joy, or perhaps the unrecognized novices yearning for exposure? 
-
-This missing tapestry of voices beckoned—an urgent call to amplify diversity and ensure expressions from every corner resonated within the kingdom. Perhaps new tales were waiting to be intertwined with the experiences of the citizens in unique and enriching ways.
-
-#### Chapter 4: A Harmonious Chorus of Languages
-
-A ray of hope beamed as we turned our gaze toward the rich fabric of languages—the vibrant pulse of the kingdom that echoed in perfect harmony without a missing note. Diverse dialects formed an intricate mosaic that suggested a potent potential for shared stories to bloom. How could these myriad voices intertwine, uplifting the very essence of experiences shared among the people?
-
-Would we find that certain languages carried an inherent magic, stirring emotions that boosted quality ratings or sparked conversations amid warmth? The prologue of exploration thrummed underneath, urging us to remain curious. 
-
-#### Epilogue: The Promise of Tomorrow
-
-As twilight descended upon DataLand, the cobbled paths of insights beckoned us to reflect. While a sturdy groundwork has been built upon user satisfaction and experience, the journey is but an eloquent beginning. 
-
-With questions lingering in the twilight air, the kingdom must ponder: **How do we highlight the unseen creators? Can we uplift the quality of experiences to captivate returning wanderers? What enchanted elements will allow the citizens to revisit tales they once cherished?**
-
-Such intrigue thrives as the community of DataLand stirs, ready to awaken beyond mere numbers. Each data point is a portal, urging us to embrace the myriad narratives and, in turn, craft a landscape rich with stories to be retold across generations.
-
-The next chapter lies ahead, vibrant and waiting. Will the citizens rise to the challenge? The quill is in their hands, and thus, the journey of discovery continues…
