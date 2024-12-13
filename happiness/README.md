@@ -118,7 +118,7 @@ Together, they imagined a future where Life Ladders could rise, where economic p
 
 Thus, through the chronicles of data, the analysts acclaimed: “Happiness is not merely a destination but a lifelong journey—one that thrives on bonds of love, trust, and the courage to dream.” And so, in their kingdom of Data, the adventure of happiness continued, ever beckoning for more stories to be told, and more lives to be touched.
 ## Outliers Analysis
-![Image](./outliers_bloxplot.png)
+![Image](./outliers_boxplot.png)
 From the boxplot you've provided, here's what you can infer about outliers in the dataset:
 
 1. **Outliers Identification**: The plot specifically highlights outliers for various variables. Each box represents the interquartile range (IQR), and points that lie outside the whiskers are considered outliers.
