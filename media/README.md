@@ -94,7 +94,7 @@ Thus, the adventure would bloom; the tapestry enriched with deeper insights, inc
 
 Will the narrative evolve, or will it stagnate in the stubborn shades of mediocrity? As the data storytellers hatch their plans, one truth remains: the real journey has only just begun. Let's embark on this exploration to reveal the next chapters, and perhaps even more captivating tales yet unheard.
 ## Outliers Analysis
-![Image](./outliers_bloxplot.png)
+![Image](./outliers_boxplot.png)
 From the provided boxplot, you can infer several key aspects about the dataset concerning the three categories: "overall," "quality," and "repeatability."
 
 1. **Boxplot Structure**:
