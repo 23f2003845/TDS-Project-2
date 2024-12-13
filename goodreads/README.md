@@ -80,7 +80,7 @@ Our findings led us to an undeniable conclusion: the world of books resembles a 
 
 In the end, the dataset transformed into a treasure map guiding readers to their next great adventure, as the heartbeats within those pages beckoned us back for more—forever turning, forever discovering, and forever enchanted by the stories that bind us all.
 ## Outliers Analysis
-![Image](./outliers_bloxplot.png)
+![Image](./outliers_boxplot.png)
 From the boxplot designed to show outliers in the dataset, you can infer several points:
 
 1. **Identification of Outliers**: The boxplot highlights points that are significantly higher or lower than the rest of the data. These outliers can indicate anomalies, errors in data collection, or interesting variations worth investigating.
