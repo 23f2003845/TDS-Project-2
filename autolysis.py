@@ -200,7 +200,12 @@ def ask_llm_to_plot(df, plot_details):
             "messages": [
                 {
                     "role": "system",
-                    "content": "You are an expert python developer. You have been provided a plotname, a dataframe example and column names. Write a python function to generate the plot using only matplotlib and seaborn. The dataframe is passed as a parameter of the function. Use the 'uv' package manager. Generate only the function code, nothing extra. \n Also call the function using the argument 'dataset' and save the plot in the current directory with the name 'custom_llm_plot.png'",
+                    "content": """You are an expert python developer. 
+                        You have been provided a plotname, a dataframe example and column names. 
+                        Write a python function to generate the plot using only matplotlib and seaborn.
+                        The dataframe is passed as a parameter of the function. 
+                        Generate only the function code, nothing extra.
+                        \n Also call the function using the argument 'dataset' and save the plot in the current directory with the name 'custom_llm_plot.png'""",
                 },
                 {
                     "role": "user",
@@ -227,7 +232,7 @@ def open_file(file_path):
     return df
 
 
-# Utitlity function to save visualisations
+# Utility function to save visualisations
 def save_visualisation(visualisation, outputDir, filename):
     """
     Parameters:
@@ -258,10 +263,10 @@ def summarize(dataset):
         "columns": dataset.dtypes.to_dict(),
         "missing_values": dataset.isnull().sum().to_dict(),
         "descriptive_summary": descriptive_summary[
-            ["mean", "std", "min", "25%", "50%", "75%", "max"]
-        ]
+            ["mean", "std", "min", "50%", "max"]
+        ].to_dict()
         if not descriptive_summary.empty
-        else None,
+        else {},
     }
 
     return summary
@@ -462,7 +467,7 @@ if __name__ == "__main__":
         summary = summarize(dataset)
 
         insights = question_llm(
-            "Analyse and provide insights from the dataset.",
+            "Provide me insights about the following numeric columns.",
             context=f"dataset summary: {summary} \n Missing values: {dataset.isnull().sum()}",
         )
         print(insights)
@@ -497,13 +502,20 @@ if __name__ == "__main__":
         # Questioning llm with images
         outliers_summary = ask_llm_with_image(
             os.path.join(outputDir, "outliers_boxplot.png"),
-            content="What can I infer from this plot? It is plotted to show outliers in the dataset.",
+            content="Do you see any outliers in this boxplot?",
         )
 
         correlation_summary = ask_llm_with_image(
             os.path.join(outputDir, "correlation_matrix_heatmap.png"),
             content="What can I infer from this plot?",
         )
+
+        custom_llm_plot_summary = ask_llm_with_image(
+            os.path.join(outputDir, "custom_llm_plot.png"),
+            content="What can I infer from this plot?",
+        )
+
+        # Save the README
         try:
             with open(os.path.join(outputDir, "README.md"), "w") as f:
                 f.write("# Data Analysis Report\n\n")
@@ -523,6 +535,7 @@ if __name__ == "__main__":
                 f.write(f"{correlation_summary}\n")
                 f.write("## Custom LLM Plot")
                 f.write("![Image](./custom_llm_plot.png)\n")
+                f.write(f"{custom_llm_plot_summary}")
                 f.write("## Summary Statistics\n")
                 f.write(f"{summary}\n\n")
                 f.write("## Missing Values\n")
