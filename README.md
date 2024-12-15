@@ -1,196 +1,235 @@
 # Data Analysis Report
 
-## Overview
-File: datasets/goodreads.csv
+File: datasets/media.csv
+
+Once upon a time in the digital realm of cinema, where stories were woven with threads of emotions, ratings, and language, a dataset emerged—a colorful tapestry reflecting the cinematic experiences scattered across time. This dataset, a collection of cinematic treasures, comprised 10,000 rows of data, each representing a unique film entry, with 8 columns capturing various facets of the films.
+
+### Overview of the Dataset
+The dataset comprises the following columns:
+
+1. **date**: A string type representing the release date of each movie in the format DD-MMM-YY. 
+2. **language**: A categorical string type indicating the language of the film, with the most notable categories being Tamil and Telugu.
+3. **type**: A string type that signals the nature of the entry—primarily focusing on film as the main attraction.
+4. **title**: A string type giving the name of the film—a window into the world of stories told on the screen.
+5. **by**: A string type featuring the notable actors or notable figures associated with the film, each often a household name among fans.
+6. **overall**: An integer type rating between 1 and 5, reflecting viewers' general perception of the film, where 1 denotes a bad experience and 5 represents a cinematic masterpiece.
+7. **quality**: An integer type rating from 1 to 5 that assesses the film's production quality.
+8. **repeatability**: An integer type, usually marked with a simple binary distinction (1 or 0), indicating whether the viewers would be willing to watch the film again. 
+
+### The Rich Story Through Numbers
+This dataset isn’t merely a collection of numbers; it encapsulates the cinematic narrative from different cultural lenses. As the analysis unfolds, we can traverse through the vibrant landscapes of Tamil and Telugu cinema.
+
+The ratings tell stories in themselves—a 5 star may evoke a heartfelt tale or technical brilliance, while a 1 might shadow a poorly received plot. The actors mentioned capture the imagination of the audience; their names evoke sentiments, memories, and fan followings.
+
+The emergence of the **repeatability** column hints at an interesting emanation—viewers might be enamored by the emotional depth of some films, while others fade just as quickly from memory.
+
+### Themes from the Data
+From the dataset, intriguing themes arise:
+
+- **Cultural Reflections**: The disparity in language might help understand regional storytelling practices. What tales do Tamil films tell against their Telugu counterparts from the same time period?
+
+- **Impact of Star Power**: Do renowned actors like Rajnikanth sway ratings more positively, or does the ensemble work as a cohesive unit elevate the overall perception of quality?
+
+- **Viewing Trends Over Time**: The timeline reflects patterns of viewer engagement and preferences over the years. What flavors influenced 2024 compared to earlier times—was it nostalgia, genre, or cinematic innovations?
+
+### Conclusion
+In this dataset, we find more than mere ratings and names; we discover cultural narratives, evolving storytelling techniques, and the emotional pulse of a region that thrives on cinema. Every row is a story waiting to be told, beckoning us to dig deeper into the world of Tamil and Telugu films, refreshing memories, igniting discussions, and perhaps even revealing the next blockbuster trend. 
+
+Analyzing this dataset, we are invited to become storytellers ourselves, stitching together data-driven narratives that celebrate the vibrant world of cinema, and perhaps, we may just uncover a hidden gem that deserves its moment in the cinematic spotlight.
 
 ## Insights
-Once upon a dataset, nestled in the realm of literature, lay a treasure trove of 10,000 tomes waiting to tell their tales. Each book carried its unique identifier, from book_id to work_id, yet they were more than just numbers; they were the gateways to the stories and knowledge bound within their pages.
+Once upon a data-driven exploration, we found ourselves peering into the numbers woven into a rich fabric of insights. Our dataset, a collection of 2,652 records, invited us to delve deep into its eight columns – a potpourri of aspects that, together, tell a compelling story about the realm in which it exists.
 
-### **A Glimpse into the Literary Landscape**
+As we opened the chapters, the first thing that caught our eye was the year of the data’s creation, punctuated with 99 missing dates. This absence of temporal context is like a riddle, creating a fog that obscures any trends we might seek. Who could say when these events occurred, and how that temporal aspect might’ve changed perceptions or outcomes?
 
-In our dataset, the literary universe is vast and varied. It describes books with an **average rating of 4.00**, suggesting that most readers are quite pleased with their choices. However, one might argue that the **standard deviation of 0.25** reflects a certain share of controversial narratives that either rose to great acclaim or fell flat in the eyes of some critics. The highest rated tome boasts an impressive score of **4.82**, while the surprisingly low end dips down to **2.47** – a reminder that not every story resonates with every heart.
+Next, we examined the language, type, title, and the mystique of the individual "by" attribute, which intriguingly held 262 missing notices—like a storyteller absent from their own tale, leaving a space filled with unspoken words. Yet, like any good narrative, the meaning seems to persist beyond the individual characters.
 
-### **The Readers' Engagement**
+Turning our attention to the numerical aspects, we found ourselves amongst the numeric columns—overall, quality, and repeatability—each brimming with potential meaning:
 
-With an astonishing total of **over 54,000 ratings**, the readers are not shy in expressing their love or disdain. Yet, their voices are not just reflected in numbers; rather, they are conveyed through a community of reviewers, with a staggering **2,919 reviews** recorded on average. The engagement reaches peaks of **155,254** reviews for the most vocal book – a crowd of opinions intertwining like the plots of a great novel.
+The **Overall** scores, average resting at **3.05**, hint towards moderate satisfaction. With a minimum of **1** and a maximum of **5**, this suggests a spectrum of experiences, reflecting that sometimes the tales spun fell short of expectations, while at others, they soared to the heights of excellence. The standard deviation of **0.76** indicates that while stories might have been tethered at the midpoint, there lies diversity in satisfaction levels that could reflect contrasting variations in either the type of content or differing audience expectations.
 
-### **Snapshots of Publications**
+In our next phase, we brushed past the **Quality** scores, averaging a bit higher at **3.21**. This quality tale tells a similar story to the overall scores: satisfaction varies, with a minimum of **1** and a max of **5**, whispering secrets of both the masterpieces and the mishaps. The standard deviation of **0.80** tells of consistent teasing between perception and reality, hinting that the audience could often be polarized in their views.
 
-In scrolling through the dataset, one cannot help but notice that books published over the years hint at evolving tastes. A range of **original publication years** stretches across nearly a millennium, with the earliest works tracing back to **-1750**—a mystery begging to be unraveled, while others only just sprouted in the last decade. With a mean publication year of **1982**, it indicates a strong leaning toward contemporary narratives. Yet, **21 titles were lost to time** with undisclosed publication years – those authors’ stories remain untold, their bibliographic identities shrouded in mystery.
+Our journey wouldn’t be complete without exploring **Repeatability**, which stood at an average of **1.49**. With a high standard deviation of **0.59**, the fluctuation here is intriguing. With every record reflecting repeatability values skewed towards **1**, we may wonder whether the stories failed to captivate enough for the audience to return, or perhaps the offerings were transient, not crafted for repeated enjoyment.
 
-### **Language Diversity**
+As we look back at our dataset through this lens, we weave our insights together:
 
-Language is a bridge to cultures and ideas, but alas, our dataset shows that **1,084 entries** are devoid of language codes. The colors of narratives portrayed are tantalizing but incomplete, hinting that the aching beauty of many tales may be lost in translation. What stories could be buried behind those missing language indicators? Stories that could highlight the great expanse of human experience across different tongues.
+1. **Engagement Patterns:** There is an evident landscape of varied audience satisfaction. The mission forward might pivot on understanding what drives the higher **Overall** and **Quality** scores, so more narratives align with the positive extremes.
 
-### **Popularity's Echoes**
+2. **Content Recurrence:** With low repeatability, innovative engagement strategies may be necessary to cultivate lasting interest and return visits—creating a captivating lore that resonates with the audience’s needs.
 
-While some books bask in the limelight with over **4.7 million ratings**, there are others that barely muster enough to stay afloat above the proverbial wave. The highest book count stands at **3,455**, a product of sheer popularity and demand. This bell curve of ratings illustrates how certain literary pieces shine brightly while others serve as quiet whispers in the grand library of existence.
+3. **Data Gaps - The Mystery:** The missing "by" figures and dates shroud the narrative in curiosity. There is potentially invaluable knowledge locked within these gaps that could bring clarity.
 
-### **An Ongoing Saga**
+4. **Quantitative Affection:** The close correlation between overall and quality scores suggests that improving one likely improves the other—a creative endeavor that could unify the storytelling approach, ensuring that each department feels respected and appreciated.
 
-As we conclude this tale of numbers and narratives, it’s evident that this dataset is an archive of human emotion, intellectual pursuit, and the power of storytelling. Each figure holds within it the sparkle of many vibrant lives and experiences, urging us to turn the pages and dive deeper into the books that captivate the minds of readers around the globe.
-
-In the end, it's not just about the books, but the stories within each book – the tales of love, loss, joy, and discovery that connect readers across time and space. So, the next time you reach for a book, remember, you aren’t just picking up a bound collection of pages—you’re embarking on an adventure steeped in history, emotion, and the boundless human spirit.
+Each figure, each attribute beckons for further exploration, unfolding like an ancient tapestry yearning to reveal its secrets. Our story thus far is merely a prologue; the real narrative awaits to be written—with questions yet to be answered, insights to uncover, and stories to tell that transcend the numbers. What will we create next? 
 
 ## Numeric Insights
-Once upon a time in the land of books, where words danced in delight and stories flowed like rivers of wisdom, we found ourselves with a treasure trove of data from 10,000 unique book adventures. Each book was a portal to a different universe, and our numeric columns served as the compass guiding us through this vast literary landscape.
+Once upon a time in the land of DataVille, a vast dataset containing the secrets of a community's quality, repeatability, and overall satisfaction was uncovered. It comprised 2,652 enchanted entries, each telling a unique story about the inhabitants’ experiences with a product or service in their daily lives. 
 
-### The Heartbeat of the Library:
-Among our characters, **book_id** reigned supreme, as it numbered from 1 to 10,000 and each number held the promise of a journey awaiting its reader. The average book would carry an identity nestled firmly at **5,000**, like the hero in the middle of their saga, surrounded by a plethora of options—yet only a flick away from another world.
+### The Journey Unfolds: 
 
-### The Influence of Good Reads:
-Our good friends—**goodreads_book_id** and **best_book_id**—shone with mean values of about **5.26 million** and **5.47 million**, respectively, suggesting that each book was not just another tale, but a part of a larger conversation amongst readers, spoken in the whispers of social engagement and collective wisdom.
+**Overall Performance**: At a glance, the overall score of 3.05 reflects a society that walks the fine line between contentment and dissatisfaction. The majority of its citizens expressed moderate satisfaction, hinting that while they were generally pleased, there was still room for improvement. Imagine a bustling marketplace filled with diverse voices: some joyous, others whispering hesitations about their experiences.
 
-### The Works of Work:
-Drawing our attention further was the **work_id**, which stood tall with an average of **8.65 million**. Each work could represent multiple books, echoing the profound impact books have over generations, like the ripple of a good deed that influences even the most distant shores.
+**Quality**: Diving deeper into the quality scores, the average was slightly higher at 3.21. This indicates that the inhabitants valued the product or service more favorably when it came to quality. When we examined the data distribution, we could see that while many aligned closely to scores of 3, a handful of individuals rated it a perfect 5, akin to shining stars in a night sky. Yet, the standard deviation of approximately 0.80 suggests that while many feel the quality is satisfactory, there exists a notable divergence of opinion. Perhaps there are hidden quirks or features that delight some while bewildering others.
 
-### The Count of Books:
-With **books_count** averaging **75.71**, we realized the insatiable appetite readers have for more stories. As this column grew with a max of **3,455**, it beckoned the readers into deeper libraries—the more they read, the more they craved!
+**Repeatability**: But what about repeatability, the measure of whether one would return for more? Here, the average score was lower at 1.49—a clear signal of discontent. Most ratings hovered at the minimum of 1, suggesting that many were reluctant to return. This sparked intrigue: Was it a momentary love affair, a fleeting spark, or an inherent flaw in the service that made them shy away? Its standard deviation of 0.60 indicates that those who dared to venture again found their own rhythms in repeatability—some loyal, while others stood reluctant, holding onto whispers of disappointment.
 
-### The Numbers Speak: Ratings Take Center Stage
-Ah, the ratings! The lifeblood of the literary world—our **ratings_1** through **ratings_5** provided a glimpse into the hearts of readers. 
+### The Socioeconomic Dynamics:
 
-1. **ratings_5**, the crowning jewel, boasted a mean of **23,789**—a testament to how many people loved certain stories enough to wrap them in five-star blankets. The highest rating hit a staggering **3,011,543**—a rave that echoed through the ages for some undisputed classic. 
-   
-2. Conversely, as we stepped down to **ratings_1**, we saw a mere **1,345.04** ratings—a hint that even in the world of books, not every tale captures the imagination, with the maximum plummeting to **456,191**, perhaps a reflection of tastes gone awry. 
+The dataset also reveals incredible socioeconomic dynamics through the quartile breakdowns. The first 25% of the scores clustered around 3 across all categories, suggesting that early adopters were mostly satisfied but not enamored. As we move toward the median, we see an almost stagnation in repeatability, which raises questions about customer engagement strategies and loyalty programs. 
 
-### The Climb from Novice to Aficionado:
-The spread of ratings further painted a picture. A standard deviation that oscillated widely—from **6,635.63** in ratings_1 to an impressive **79,768.89** in ratings_5—hinted at the dynamic and diverse opinions held by readers who wander into different realms of thought. Indeed, ratings shared more than numbers; they mirrored the emotional landscape and the diverse palettes of readers.
+#### Hidden Gems:
 
-### The Interplay of Mean and Median:
-When we looked at the median ratings, it became clear: while the mean painted a rosy picture of ‘average enjoyment,’ the median quietly whispered that many readers were also firmly positioned at lower levels of satisfaction. This contrast of **391 for ratings_1** and **8,836 for ratings_5** showcased the deep chasm between adoration and indifference in reader response.
+- **Top Performers**: The magic number—5—was a score that appeared like rare gemstones in the dataset. Only a few acknowledged the excellence in quality or the desire to come back for more. Engaging these “super users” through testimonials could create a ripple effect of loyalty—if their glowing experiences were shared with the wider community, who knows how perceptions might change?
 
-### Conclusion: A Tapestry of Stories
-As our analysis drew to a close, it became evident that this dataset was a rich tapestry—woven with threads of joy, disappointment, engagement, and indifference. Each book, more than a string of characters on a page, carried the weight of opinions, experiences, and emotions gathered from readers around the globe.
+- **Room For Growth**: The significant gap between quality and repeatability suggests a critical opportunity. A more profound look into customer journeys may unveil barriers preventing return visits. Could it be that expectations set by marketing exceeded the actual service experience? 
 
-Thus, the library of 10,000 stood not merely as a collection of books but as a living entity, where stories transform into legends, and every rating becomes a heartbeat—a reminder that within every number lies a narrative waiting to be unveiled. And so, dear reader, the story of the numeric columns unfolds, inviting you to embark on your literary journey, with every book a new adventure and every rating a reflection of your own ever-evolving taste.
+### Conclusion:
+
+In conclusion, whilst the citizens of DataVille are generally satisfied with the quality of what they encounter, the reluctance toward repeat visits creates an intriguing paradox—one that calls for introspection and innovation. What holds the key to unlocking the potential of repeatability? It is a question that beckons answer as merchants and service providers reevaluate their crafts. The storyline of this dataset continues, waiting for deeper exploration, transformation, and ultimately, a happier, more connected community. 
+
+And thus, the tale of DataVille’s deep-rooted insights leads us into the next chapter of improvement, innovation, and engagement. Let the story be told!
 
 ## Story
-## The Chronicles of the Literary Cosmos: A Dataset Saga
+### A Tale of DataVille: The Chronicles of Quality and Customer Engagement
 
-In a world defined by stories, nestled deep within the glimmering constellations of data, lies a vast library of **10,000 books**, each one a vessel of imagination, waiting to transport its reader to realms unknown. This tale unfolds not merely through words, but through the dance of numbers and the whispers of literary critics, beckoning us to explore the rich narratives interwoven within our beloved books.
+Once upon a time in the bustling town of DataVille, a curious dataset emerged from the shadows, revealing the chronicles of 2,652 inhabitants who had experienced a myriad of services and products over the years. This dataset was no ordinary collection of numbers; it was a tapestry of perspectives woven together to form a complete picture of community life where satisfaction and joy coexisted with unmet expectations and fleeting interests.
 
-### **The Awakening of Dreams**
+As the story unfolds, we find ourselves in a grand hall of insights, adorned with fascinating columns like **Overall**, **Quality**, and **Repeatability**. Each column held a treasure trove of information, beckoning the townsfolk to delve deeper into the meaning behind the numbers.
 
-Our journey begins at the very heart of this dataset, where each **book_id** stands tall among its peers, beckoning the aspirants of literature. Picture, if you will, our average traveler in this literary realm—**Book 5,000**, resting in the eye of the storm, surrounded by an eclectic library bursting with stories. Each unique **goodreads_book_id** and **best_book_id** glow with the promise of connection; numbers soaring in the **millions**, hinting that these aren’t just numbers, but links to a global conversation vibrant with readers' whispers and shouts.
+#### Chapter 1: The Balance of Satisfaction
 
-### **An Array of Reactions**
+In DataVille, the **Overall** score reached a modest **3.05**, hovering between contentment and dissatisfaction like a tightrope walker looking down at the ground below. Here, the citizens displayed moderate satisfaction, but their voices carried undertones of longing for something greater. The scale, ranging from 1 to 5, painted a vivid image: some residents sang hymns of joy while others whispered tales of unmet desires, suggesting that the experiences offered fell short of the magic they hoped for. 
 
-But what is a book without the essence of its readers? Lost in the enigmatic sea of critiques are **over 54,000 ratings**, each one a gossamer thread binding the reading community. Readers don’t shy away from sharing their emotions; every **rating** that finds a home is like a pebble dropped in a pond, sending ripples across the stratosphere of opinions. Immerse yourself in the enthusiasm of our average book; it has garnered **2,919 reviews**, with one particularly vocal title reaching epic proportions—**155,254 reviews** that paint an intricate portrait of affection, critique, and profound musings over a single narrative.
+This average score was complemented by a standard deviation of **0.76**, a gentle reminder that tales of joy and discontent were scattered across the spectrum. Some individuals rated their experiences at the lowest rung—1—while others soared to the heights of 5, embodying both the struggles and triumphs of community life.
 
-### **A Tapestry of Time**
+#### Chapter 2: Quality, the Shining Star
 
-As we navigate deeper into these pages, **original_publication_year** offers us a glimpse into the timelines of these literary gems; a continuum extending from the mysterious origins of **-1750** to the quickly shifting landscapes of contemporary storytellers. With a mean year snugly settled in **1982**, the dataset echoes the desires of modern audiences, yet 21 stories remain shrouded in the mists of time—silent witnesses to history, whose voices fade away into oblivion.
+Venturing further into the halls of exploration, we arrived at the **Quality** scores, which averaged slightly higher at **3.21**. This chapter glimmered with promise, suggesting the townsfolk recognized moments of excellence among the ordinary. Here, the sparkling rarity of the perfect score—5—stood out like a guiding star in the night sky, beckoning all to acknowledge that quality can indeed shine through, even amid mediocrity.
 
-### **Linguistic Legacies**
+Yet, not all was harmonious. The standard deviation of **0.80** indicated a compelling tale of polarization among residents; what sparked joy in one heart left another feeling bewildered and underwhelmed. It seemed there existed features and experiences that catered to those with discerning tastes, while others, quite frankly, failed to leave an impression.
 
-The saga of languages also captivates; while the richness of storytelling thrives, **1,084 entries** dwell in silence, devoid of their language codes. These omissions hint at a loss of cultural vibrancy, urging us to contemplate what narratives have slipped through the cracks—what diverse experiences lie hidden, yearning to emerge in passionate prose or poetic verse.
+#### Chapter 3: A Quest for Return
 
-### **The Dance of Popularity**
+Now we entered the darker chamber—the realm of **Repeatability**. Here, the average score settled at a disheartening **1.49**, a resounding signal that many were hesitant to revisit. The overwhelming shift toward the minimum score of 1 hinted at fleeting encounters—moments that felt temporary and fleeting, like raindrops in summer.
 
-The figures come alive as we observe how some tomes bask in the limelight of popularity, while others linger in obscurity like unsung heroes. Consider, for instance, the most coveted tales, which boast a staggering **3,455 works**—each beloved story a tribute to the human spirit and its unquenchable thirst for adventure. Yet, our dataset reveals a poignant truth: while some stories captivate, ushering millions into their embrace, others lay quietly, contributing their wisdom in a more subdued manner.
+As hearts sank, we pondered the mysteries enshrouding repeatability. Why had they decided to turn away? Perhaps the offerings were not crafted for loyalty. Or maybe the town’s allure diminished in the light of first encounters, leading to second thoughts and regrets. The standard deviation of **0.60** illustrated that while some dared to return, many walked a different path, staying untouched by the allure of familiarity.
 
-### **The Joys and Sorrows of Ratings**
+### The Strands of Insight Woven Together
 
-Ah, the ratings! The tapestry of opinions weaves itself vividly through our columns **ratings_1 to ratings_5**. The **5-star ratings** overflow with praise, averaging **23,789**—a testament to the literary magic that could sweep readers off their feet. Yet, in stark contrast, the **1-star ratings** breathe the whispers of disappointment, averaging just **1,345.04**. They remind us that in the sprawling universe of literature, not every tale captures the heart, just as not every star shines bright against the tapestry of night.
+As we stepped back to view the entire dataset, we began gathering the strands of insight that wove through the tapestry of DataVille’s narrative:
 
-### **The Call of the Adventurer**
+1. **Engagement Patterns**: The delicate balance of satisfaction hints at an imperative need for deeper understanding of what rekindles joy. The townsfolk need stories that resonate, beckoning them to not just sample but savor the experiences offered.
 
-The heartbeats of readers thrum in the pulse of the **median and mean** ratings, revealing a world where joy and discontent intersect—a metronome of literary pursuits. While the ratings reflect happiness radiating from a beloved classic, they simultaneously illuminate the stillness surrounding an underrated paperback. The contrast becomes a poignant reminder: every book holds dualities within—joy and despair, connection and solitude.
+2. **Diving into Quality**: The correlation between **Overall** and **Quality** scores sends a clear message: enhancing quality might spark an uptick in return visits. The key lies in unlocking the secrets to customer journeys, addressing pain points, and amplifying moments of delight.
 
-### **Conclusion: The Ever-Continuing Expedition**
+3. **The Mystery of Missing Voices**: Among the records lie gaps—262 missing names under the "by" column and 99 unspecified dates—like disguised treasures waiting to be uncovered. Who were these storytellers? What experiences did they harbor? This missing lore could hold answers to the questions sparking our curiosity.
 
-Thus, dear reader, as we navigate through this dataset, we unveil a grand narrative—one that transcends numbers and emerges as a living chronicle of human experiences. Each data point becomes not merely an isolated figure but an emblem of shared journeys, cherished moments, and the indomitable spirit of storytelling. 
+4. **A Desire for Repeat Visits**: Emphasis must be placed on nurturing repeatability, for the fleeting moments documented in the data indicate an opportunity to craft enchanting experiences that linger in the hearts and minds of the townsfolk.
 
-This collection of **10,000** books stands not simply as an archive but an odyssey, reminding us that every title is an invitation to explore, and every rating is a heartbeat of connection. The literary cosmos, forever expanding and captivating the hearts and minds of those brave enough to turn the page, calls out, beckoning you to embark on your adventure—a sacred journey awaiting your discovery in the infinite expanse of books.
+### Conclusion: The Future of DataVille
+
+And so, the chronicles of DataVille invite us on a journey of discovery, innovation, and engagement. The residents are not mere numbers; they are dynamic characters yearning for connection and satisfaction. With each insight, the story pushes us toward a realm where creativity and customer-centric strategies meld harmoniously.
+
+The next chapter awaits, eager for exploration and transformation. What wondrous changes shall unfold as DataVille embraces the wisdom hidden within its dataset? As we turn the page, the citizens and merchants alike prepare to craft a narrative that will not just tell their tales, but deepen the bonds that tie their lives together—a tale of flourishing engagement, returning visitors, and elevated satisfaction. Let the journey continue, for the tale of DataVille is far from over.
 ## Outliers Analysis
 ![Image](./outliers_bloxplot.png)
-From the provided boxplot, you can infer several things about the dataset and its outliers:
+Yes, in the boxplot you provided, there are visible outliers in the "overall" and "quality" categories. Outliers are typically represented as individual points outside the whiskers of the boxplot.
 
-1. **Identification of Outliers**: The plot indicates that there are several outliers in the dataset, specifically for variables like `isbn13`, which has extreme values significantly higher than the rest. This suggests there could be issues with data entry or that some values represent rare cases.
+Regarding what else you can do with the same data, consider the following analyses:
 
-2. **Data Distribution**: The boxplot shows the interquartile range (IQR) and the median for each variable. Variables such as `original_publication_year`, `average_rating`, and others are likely to have a more normal distribution without extreme outliers.
+1. **Regression Analysis**: 
+   - You can perform linear regression to model relationships between an independent variable and a dependent variable.
+   - Consider multiple regression if you have more than one predictor.
 
-3. **Potential Data Quality Issues**: The presence of extreme values, especially in variables like `isbn13`, might warrant further investigation to ensure data validity and consistency.
+2. **ANOVA (Analysis of Variance)**: 
+   - This can help assess whether there are statistically significant differences between the means of three or more groups.
 
-4. **Comparison Across Variables**: By comparing the length of the boxes (IQR) and the position of the median line within the boxes, you can assess which variables have higher variability and potentially skewed distributions.
+3. **Correlation Analysis**: 
+   - Determine the strength and direction of relationships between different variables using correlation coefficients.
 
-5. **Quartile Insights**: The lengths of the boxes can provide insight into the spread of the central 50% of the data in each variable, giving an idea about consistency or variability across different attributes.
+4. **Time Series Analysis**: 
+   - If your data is time-based, you can analyze trends over time and perform forecasting.
 
-Overall, while the boxplot provides a clear visual representation of potential outliers, further analysis may be necessary to understand their impact on the dataset and the overall implications for your analysis.
+5. **Clustering**: 
+   - Use clustering techniques to identify groups within your data.
+
+6. **Hypothesis Testing**: 
+   - Test various hypotheses about your data using t-tests or chi-squared tests.
+
+7. **Data Transformation**: 
+   - If normality is an issue, consider transforming your data (e.g., log transformation) to meet the assumptions of certain statistical tests.
+
+8. **Visualization**: 
+   - Further exploration using scatter plots, histograms, or heatmaps could provide insights into the characteristics of your data.
+
+These analyses can help you better understand the relationships and patterns within your dataset.
 ## Correlation Matrix Analysis
 ![Image](./correlation_matrix_heatmap.png)
-From the correlation matrix heatmap you provided, several inferences can be drawn:
+From the heatmap you provided, you can infer the following correlations between the three variables:
 
-1. **High Positive Correlation**:
-   - The variable `work_id` and `book_id` have a strong correlation of 0.993. This suggests that they are highly related, which may indicate that they refer to the same or very similar entities in the dataset.
-   - The `work_ratings_count` exhibits a high positive correlation with `ratings_1`, `ratings_2`, and `ratings_3`. This suggests that as the number of ratings increases, the counts in these categories also increase.
+1. **Overall and Quality**: There is a strong positive correlation (0.826) between "overall" and "quality," suggesting that as the overall score increases, the quality score tends to increase as well.
 
-2. **Moderate Positive Correlation**:
-   - The variables `original_publication_year` and `average_rating` show a moderate positive correlation (0.590), implying that newer books tend to have slightly higher average ratings.
-   - `average_rating` is also positively correlated with `work_ratings_count` (0.731) indicating that books with more ratings tend to have higher average ratings.
+2. **Overall and Repeatability**: The correlation between "overall" and "repeatability" is moderate (0.513), indicating a positive relationship, but it's not as strong as the correlation with quality.
 
-3. **Negative Correlation**:
-   - There is a noticeable negative correlation between `ratings_1` and some of the other rating categories, suggesting that as one rating category increases, another tends to decrease.
+3. **Quality and Repeatability**: The correlation between "quality" and "repeatability" is relatively weak (0.312), suggesting that changes in quality do not significantly influence repeatability, or vice versa.
 
-4. **No or Low Correlation**:
-   - Some variables might show low correlations, which implies that they are relatively independent of each other in terms of the relationships represented in this dataset.
+### Additional Analyses You Can Perform:
 
-5. **General Observations**:
-   - High correlations might suggest redundancy among certain variables, meaning they may convey similar information.
-   - The absence of strong negatives indicates that there's a general trend of positive relationships among the ratings and book-related metrics.
+1. **Regression Analysis**:
+   - **Linear Regression**: Model the relationship between one or more independent variables (like quality) and a dependent variable (like overall).
+   - **Multiple Regression**: Use all three variables to predict an outcome.
 
-This heatmap serves as a useful tool for identifying potential dependencies and relationships among various features in your dataset, which can inform further analysis or modeling efforts.
-## Custom LLM Plot![Image](./custom_llm_plot.png)
-## Summary Statistics
-{'row_count': 10000, 'column_count': 23, 'columns': {'book_id': dtype('int64'), 'goodreads_book_id': dtype('int64'), 'best_book_id': dtype('int64'), 'work_id': dtype('int64'), 'books_count': dtype('int64'), 'isbn': dtype('O'), 'isbn13': dtype('float64'), 'authors': dtype('O'), 'original_publication_year': dtype('float64'), 'original_title': dtype('O'), 'title': dtype('O'), 'language_code': dtype('O'), 'average_rating': dtype('float64'), 'ratings_count': dtype('int64'), 'work_ratings_count': dtype('int64'), 'work_text_reviews_count': dtype('int64'), 'ratings_1': dtype('int64'), 'ratings_2': dtype('int64'), 'ratings_3': dtype('int64'), 'ratings_4': dtype('int64'), 'ratings_5': dtype('int64'), 'image_url': dtype('O'), 'small_image_url': dtype('O')}, 'missing_values': {'book_id': 0, 'goodreads_book_id': 0, 'best_book_id': 0, 'work_id': 0, 'books_count': 0, 'isbn': 700, 'isbn13': 585, 'authors': 0, 'original_publication_year': 21, 'original_title': 585, 'title': 0, 'language_code': 1084, 'average_rating': 0, 'ratings_count': 0, 'work_ratings_count': 0, 'work_text_reviews_count': 0, 'ratings_1': 0, 'ratings_2': 0, 'ratings_3': 0, 'ratings_4': 0, 'ratings_5': 0, 'image_url': 0, 'small_image_url': 0}, 'descriptive_summary':                                            mean                  std          min              25%              50%              75%              max
-book_id                                  5000.5           2886.89568          1.0          2500.75           5000.5          7500.25          10000.0
-goodreads_book_id                  5264696.5132        7575461.86359          1.0         46275.75         394965.5       9382225.25       33288638.0
-best_book_id                       5471213.5801        7827329.89072          1.0         47911.75         425123.5        9636112.5       35534230.0
-work_id                            8646183.4246       11751060.82408         87.0        1008841.0        2719524.5      14517748.25       56399597.0
-books_count                             75.7127           170.470728          1.0             23.0             40.0             67.0           3455.0
-isbn                                        NaN                  NaN          NaN              NaN              NaN              NaN              NaN
-isbn13                     9755044298883.462891  442861920665.573364  195170342.0  9780316192995.0  9780451528640.0  9780830777175.0  9790007672390.0
-authors                                     NaN                  NaN          NaN              NaN              NaN              NaN              NaN
-original_publication_year           1981.987674           152.576665      -1750.0           1990.0           2004.0           2011.0           2017.0
-original_title                              NaN                  NaN          NaN              NaN              NaN              NaN              NaN
-title                                       NaN                  NaN          NaN              NaN              NaN              NaN              NaN
-language_code                               NaN                  NaN          NaN              NaN              NaN              NaN              NaN
-average_rating                         4.002191             0.254427         2.47             3.85             4.02             4.18             4.82
-ratings_count                        54001.2351        157369.956436       2716.0         13568.75          21155.5          41053.5        4780653.0
-work_ratings_count                   59687.3216        167803.785237       5510.0         15438.75          23832.5          45915.0        4942365.0
-work_text_reviews_count               2919.9553          6124.378132          3.0            694.0           1402.0          2744.25         155254.0
-ratings_1                             1345.0406          6635.626263         11.0            196.0            391.0            885.0         456191.0
-ratings_2                              3110.885          9717.123578         30.0            656.0           1163.0          2353.25         436802.0
-ratings_3                            11475.8938         28546.449183        323.0           3112.0           4894.0           9287.0         793319.0
-ratings_4                            19965.6966         51447.358384        750.0          5405.75           8269.5          16023.5        1481305.0
-ratings_5                            23789.8056         79768.885611        754.0           5334.0           8836.0          17304.5        3011543.0
-image_url                                   NaN                  NaN          NaN              NaN              NaN              NaN              NaN
-small_image_url                             NaN                  NaN          NaN              NaN              NaN              NaN              NaN}
+2. **Exploratory Data Analysis (EDA)**:
+   - Visualize distributions using histograms or density plots.
+   - Create scatter plots to visually assess relationships between pairs of variables.
 
-## Missing Values
-book_id                         0
-goodreads_book_id               0
-best_book_id                    0
-work_id                         0
-books_count                     0
-isbn                          700
-isbn13                        585
-authors                         0
-original_publication_year      21
-original_title                585
-title                           0
-language_code                1084
-average_rating                  0
-ratings_count                   0
-work_ratings_count              0
-work_text_reviews_count         0
-ratings_1                       0
-ratings_2                       0
-ratings_3                       0
-ratings_4                       0
-ratings_5                       0
-image_url                       0
-small_image_url                 0
-dtype: int64
+3. **Principal Component Analysis (PCA)**: Reduce dimensionality and identify the most significant variables influencing overall performance.
 
+4. **Clustering**: Group observations based on similar characteristics using clustering algorithms like K-means or hierarchical clustering.
+
+5. **ANOVA (Analysis of Variance)**: If you have categorical data, compare the means of different groups to see if there are significant differences.
+
+6. **Time Series Analysis**: If your data has a temporal component, analyze trends and seasonal patterns over time.
+
+7. **Machine Learning Models**: Depending on your outcome variable, consider using classification or regression models like decision trees, random forests, or support vector machines.
+
+Applying these methods will help you gain deeper insights into your data and potentially improve predictions or understand the relationships between variables better.
+## Custom LLM Plot 
+![Image](./custom_llm_plot.png)
+From the bar chart titled "Bar Chart of Overall Ratings by Language," you can infer the following:
+
+1. **Dominance of Languages**: English has the highest overall ratings, significantly outpacing the other languages depicted. This suggests that content in English is more rated or more popular among users compared to the others.
+   
+2. **Comparative Ratings**: Tamil and Telugu have notably high ratings compared to most of the other languages. Hindi also shows a considerable number of ratings, though less than English, Tamil, and Telugu.
+
+3. **Low Ratings for Other Languages**: Languages such as Spanish, Japanese, Malayalan, Chinese, Korean, German, and French have relatively low overall ratings, indicating they may have less engagement or fewer rated instances.
+
+### Further Analysis You Can Perform on the Same Data:
+
+1. **Regression Analysis**:
+   - **Linear Regression**: Analyze if there's a linear relationship between the number of ratings and other potential predictors such as language popularity or content type.
+   
+2. **ANOVA (Analysis of Variance)**:
+   - Compare the means of overall ratings among different languages to see if there are statistically significant differences.
+
+3. **Correlation Analysis**:
+   - Investigate relationships between overall ratings and other metrics, such as user reviews or session duration.
+
+4. **Sentiment Analysis**:
+   - If you have access to user reviews, conduct sentiment analysis to see if there's a correlation between sentiment and overall ratings by language.
+
+5. **Time Series Analysis**:
+   - If the data also includes timestamps, analyze trends over time to observe how ratings by language have changed.
+
+6. **Clustering**:
+   - Group languages based on patterns in ratings; this could reveal insights about genre popularity in different languages.
+
+7. **Machine Learning Classification**:
+   - Use classification algorithms to predict the language based on ratings or user demographics if that data is available.
+
+8. **Data Visualization**:
+   - Create additional visualizations such as box plots to show the distribution of ratings across languages or heatmaps to analyze correlations.
+
+Each of these analyses can help deepen your understanding of user engagement by language and uncover patterns that can inform decision-making.

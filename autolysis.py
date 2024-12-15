@@ -108,6 +108,10 @@ def ask_llm_with_image(imagePath, content):
                                 "detail": "low",
                             },
                         },
+                        {
+                            "type": "text",
+                            "text": "Also tell me, what else I can do on the same data like regression and so on?",
+                        },
                     ],
                 },
             ],
@@ -205,7 +209,7 @@ def ask_llm_to_plot(df, plot_details):
                         Write a python function to generate the plot using only matplotlib and seaborn.
                         The dataframe is passed as a parameter of the function. 
                         Generate only the function code, nothing extra.
-                        \n Also call the function using the argument 'dataset' and save the plot in the current directory with the name 'custom_llm_plot.png'""",
+                        \n Also call the function using the argument 'dataset' and no need to show the plot, just save the plot in the current directory with the name 'custom_llm_plot.png'""",
                 },
                 {
                     "role": "user",
@@ -515,12 +519,16 @@ if __name__ == "__main__":
             content="What can I infer from this plot?",
         )
 
+        llm_data_summary = question_llm(
+            f"Provide an overwiew of the dataset, like number of columns, rows, and column types. \n Data Sample: {dataset.head().to_string()}"
+        )
+
         # Save the README
         try:
             with open(os.path.join(outputDir, "README.md"), "w") as f:
                 f.write("# Data Analysis Report\n\n")
-                f.write("## Overview\n")
                 f.write(f"File: {filename}\n\n")
+                f.write(f"{llm_data_summary}\n\n")
                 f.write("## Insights\n")
                 f.write(f"{insights}\n\n")
                 f.write("## Numeric Insights\n")
@@ -533,13 +541,9 @@ if __name__ == "__main__":
                 f.write("## Correlation Matrix Analysis\n")
                 f.write("![Image](./correlation_matrix_heatmap.png)\n")
                 f.write(f"{correlation_summary}\n")
-                f.write("## Custom LLM Plot")
+                f.write("## Custom LLM Plot \n")
                 f.write("![Image](./custom_llm_plot.png)\n")
                 f.write(f"{custom_llm_plot_summary}")
-                f.write("## Summary Statistics\n")
-                f.write(f"{summary}\n\n")
-                f.write("## Missing Values\n")
-                f.write(f"{dataset.isnull().sum()}\n\n")
 
         except Exception as e:
             print(f"Error writing to README.md: {e}")
