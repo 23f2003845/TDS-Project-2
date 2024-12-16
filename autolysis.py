@@ -492,32 +492,38 @@ if __name__ == "__main__":
             print(f"Error in custom plot: {e}")
 
         # Numeric analysis
-        numeric_insights = question_llm(
-            "Provide me insights about the following numeric columns.",
-            context=f"Numeric columns summary:\n{dataset.select_dtypes(include=['number']).describe()}",
-        )
+        # numeric_insights = question_llm(
+        # "Provide me insights about the following numeric columns.",
+        # context=f"Numeric columns summary:\n{dataset.select_dtypes(include=['number']).describe()}",
+        # )
 
         # Generating the story
         story = question_llm(
             "Generate a nice and creative story from the analysis",
-            context=f"Dataset Analysis:\nSummary: {summary}\nMissing Values: {dataset.isnull().sum()}\nInsights: {insights}\nNumeric Column Insights: {numeric_insights}",
+            context=f"Dataset Analysis:\nSummary: {summary}\nMissing Values: {dataset.isnull().sum()}\nInsights: {insights}\n",
         )
 
         # Questioning llm with images
-        outliers_summary = ask_llm_with_image(
-            os.path.join(outputDir, "outliers_boxplot.png"),
-            content="Do you see any outliers in this boxplot?",
-        )
+        outliers_summary = None
+        if os.path.exists("outliers_boxplot.png"):
+            outliers_summary = ask_llm_with_image(
+                os.path.join(outputDir, "outliers_boxplot.png"),
+                content="Do you see any outliers in this boxplot?",
+            )
 
-        correlation_summary = ask_llm_with_image(
-            os.path.join(outputDir, "correlation_matrix_heatmap.png"),
-            content="What can I infer from this plot?",
-        )
+        correlation_summary = None
+        if os.path.exists("correlation_matrix_heatmap.png"):
+            correlation_summary = ask_llm_with_image(
+                os.path.join(outputDir, "correlation_matrix_heatmap.png"),
+                content="What can I infer from this plot?",
+            )
 
-        custom_llm_plot_summary = ask_llm_with_image(
-            os.path.join(outputDir, "custom_llm_plot.png"),
-            content="What can I infer from this plot?",
-        )
+        custom_llm_plot_summary = None
+        if os.path.exists("custom_llm_plot.png"):
+            custom_llm_plot_summary = ask_llm_with_image(
+                os.path.join(outputDir, "custom_llm_plot.png"),
+                content="What can I infer from this plot?",
+            )
 
         llm_data_summary = question_llm(
             f"Provide an overwiew of the dataset, like number of columns, rows, and column types. \n Data Sample: {dataset.head().to_string()}"
@@ -531,19 +537,22 @@ if __name__ == "__main__":
                 f.write(f"{llm_data_summary}\n\n")
                 f.write("## Insights\n")
                 f.write(f"{insights}\n\n")
-                f.write("## Numeric Insights\n")
-                f.write(f"{numeric_insights}\n\n")
+                # f.write("## Numeric Insights\n")
+                # f.write(f"{numeric_insights}\n\n")
                 f.write("## Story\n")
                 f.write(f"{story}\n")
-                f.write("## Outliers Analysis\n")
-                f.write("![Image](./outliers_bloxplot.png)\n")
-                f.write(f"{outliers_summary}\n")
-                f.write("## Correlation Matrix Analysis\n")
-                f.write("![Image](./correlation_matrix_heatmap.png)\n")
-                f.write(f"{correlation_summary}\n")
-                f.write("## Custom LLM Plot \n")
-                f.write("![Image](./custom_llm_plot.png)\n")
-                f.write(f"{custom_llm_plot_summary}")
+                if outliers_summary:
+                    f.write("## Outliers Analysis\n")
+                    f.write("![Image](./outliers_bloxplot.png)\n")
+                    f.write(f"{outliers_summary}\n")
+                if correlation_summary:
+                    f.write("## Correlation Matrix Analysis\n")
+                    f.write("![Image](./correlation_matrix_heatmap.png)\n")
+                    f.write(f"{correlation_summary}\n")
+                if custom_llm_plot_summary:
+                    f.write("## Custom LLM Plot \n")
+                    f.write("![Image](./custom_llm_plot.png)\n")
+                    f.write(f"{custom_llm_plot_summary}")
 
         except Exception as e:
             print(f"Error writing to README.md: {e}")
