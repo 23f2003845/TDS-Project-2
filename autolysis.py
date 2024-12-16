@@ -543,7 +543,7 @@ if __name__ == "__main__":
                 f.write(f"{story}\n")
                 if outliers_summary:
                     f.write("## Outliers Analysis\n")
-                    f.write("![Image](./outliers_bloxplot.png)\n")
+                    f.write("![Image](./outliers_boxplot.png)\n")
                     f.write(f"{outliers_summary}\n")
                 if correlation_summary:
                     f.write("## Correlation Matrix Analysis\n")
