@@ -137,7 +137,7 @@ The tale of the digital library doesn’t merely reside in what we publish; it e
 
 As we close this chapter on numerical insights and literary dreams, may we all be inspired to read, share, and discover the countless adventures awaiting us on the shelf of our digital futures.
 ## Outliers Analysis
-![Image](./outliers_bloxplot.png)
+![Image](./outliers_boxplot.png)
 In the provided boxplot, there are several points that can be identified as potential outliers. Specifically, the values for certain variables, such as `isbn13`, show points outside the typical range represented by the interquartile range (IQR). These points are much higher than the rest of the data, indicating they may be outliers.
 
 ### Other Analyses You Can Conduct on the Same Data:
