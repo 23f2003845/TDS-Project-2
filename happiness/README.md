@@ -120,7 +120,7 @@ In the twilight of their exploration, the data scientists emerged enlightened by
 
 The final insight crystallized: happiness is not merely a destination but a continuous journey—one that requires the nourishment of community, understanding, equity, and resilience. As the explorers shared their newfound wisdom, they dared the world to listen, to act, and to join hands in crafting a future where every individual climbs their own Life Ladder, may it be adorned with the colors of joy, compassion, and limitless possibility. And thus, the story of humanity continued, forever influenced by the lessons of data, woven together in the fabric of our shared existence.
 ## Outliers Analysis
-![Image](./outliers_bloxplot.png)
+![Image](./outliers_boxplot.png)
 In the boxplot you provided, outliers can be identified as any points that fall outside the whiskers of the boxplot. The whiskers typically extend to 1.5 times the interquartile range (IQR) from the quartiles. If there are points above or below this range, they are considered outliers.
 
 ### Identifying Outliers
